@@ -1,22 +1,36 @@
-heroku-buildpack-imagemagick
-=================================
+# heroku-buildpack-imagemagick
 
-This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for vendoring the ImageMagick binaries into your project.
+This is a Heroku Buildpack for vendoring the ImageMagick binaries into your project.
 
-This one actually works :)
+# Compatibility
 
-### Install
+This Buildpack is using ImageMagick v7.1.1-27 and compatible with `heroku-22` stack.
 
-In your project root:
+# Installation
 
-`heroku buildpacks:add https://github.com/DuckyTeam/heroku-buildpack-imagemagick  --index 1 --app HEROKU_APP_NAME`
+### a. Via Heroku CLI
 
-"index 1" means that imagemagick will be installed first.
+```
+heroku buildpacks:add https://github.com/OneBacklog/heroku-buildpack-imagemagick --index 1 --app HEROKU_APP_NAME
+```
 
-### Changing version
-Go to https://www.imagemagick.org/download/releases and find a version you want (*.tar.gz). Edit the `bin/compile` file and change out the version number. Clear cache, as shown below, and redeploy your app to Heroku.
+"index 1" means that ImageMagick will be installed first.
 
-### Clear cache
+### b. Via Heroku Dashboard
+
+1. Go to your Heroku App's [Settings]
+2. Scroll to [Buildpacks] and click [Add Buildpack]
+3. Enter `https://github.com/OneBacklog/heroku-buildpack-imagemagick`
+4. Adjust the order so this Buildpack is placed first
+
+# Changing Version
+
+1. Go to https://www.imagemagick.org/download/releases and find a version you want (*.tar.gz).
+2. Edit the `bin/compile` file and change out the version number.
+3. Clear cache as shown below and redeploy your app.
+
+# Clear Cache
+
 Since the installation is cached you might want to clean it out due to config changes.
 
 1. `heroku plugins:install heroku-repo`
